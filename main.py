@@ -25,7 +25,7 @@ def get_items():
     return load_data()
 
 
-@app.get("/items/{item_id}", response_model=Item)
+@app.get("/items/{item_i}", response_model=Item)
 def get_item(item_id: int):
     item = next((i for i in load_data() if i['id'] == item_id),None)
     if not item:
