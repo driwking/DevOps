@@ -31,5 +31,3 @@ def get_item(item_id: int):
     if not item:
         raise HTTPException(status_code=404, detail="Usuário não encontrado")
     return item
-    
-
