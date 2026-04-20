@@ -10,7 +10,7 @@ def load_data():
         return json.load(f)
 
 class Item(BaseModel):
-    id: int
+    id: str
     item: str
     price: str | None = None
 
