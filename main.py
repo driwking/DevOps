@@ -10,7 +10,7 @@ def load_data():
         return json.load(f)
 
 class Item(BaseModel):
-    id: int
+    id: str
     item: str
     price: str | None = None
 
@@ -25,11 +25,9 @@ def get_items():
     return load_data()
 
 
-@app.get("/items/{item_id}", response_model=Item)
+@app.get("/items/{item_i}", response_model=Item)
 def get_item(item_id: int):
     item = next((i for i in load_data() if i['id'] == item_id),None)
     if not item:
         raise HTTPException(status_code=404, detail="Usuário não encontrado")
     return item
-    
-
