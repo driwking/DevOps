@@ -1,0 +1,23 @@
+name: Continuous Delivery
+
+on:
+  push:
+    branches:
+      - main # ou qualquer outra branch
+
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: simulando CD
+        uses: actions/upload-artifact@v7
+        with:
+          name: projeto toZip
+          path: |
+            main.py
+            mock.json
+            README.md
