@@ -16,8 +16,18 @@ jobs:
       - name: simulando CD
         uses: actions/upload-artifact@v7
         with:
-          name: projeto toZip
+          name: projeto_toZip
           path: |
             main.py
             mock.json
             README.md
+    
+  deploy:
+    runs-on: ubuntu-latest
+    needs: deliver
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: projeto_toZip
+      - name: Display structure of downloaded files
+        run: ls -R
