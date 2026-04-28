@@ -24,10 +24,13 @@ jobs:
   discord-webhook:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Run Discord Webhook
-        uses: Sniddl/discord-commits@v1.8
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          template: "avatar-with-link"
-          include-extras: true
+      # - name: Your previous build steps
+    
+      - name: Notify discord
+        uses: th0th/notify-discord@v0.4.1
+        if: ${{ always() }}
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_JOB_NAME: "Build and deploy"
+          GITHUB_JOB_STATUS: ${{ job.status }}
