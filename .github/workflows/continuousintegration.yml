@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   builds:
     runs-on: ubuntu-latest
@@ -28,4 +31,3 @@ jobs:
           webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}
           template: "avatar-with-link"
           include-extras: true
-          
