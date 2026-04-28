@@ -23,7 +23,6 @@ jobs:
 
   discord-webhook:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'  
     steps:
       - uses: actions/checkout@v4
       - name: Run Discord Webhook
